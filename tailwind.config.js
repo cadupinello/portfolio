@@ -19,6 +19,7 @@ module.exports = {
     extend: {
       fontFamily: {
         italiana: ['Italiana', 'serif'],
+        anton: ['Anton', 'sans-serif'],
         koho: ['KoHo', 'sans-serif'],
         bebas: ['Bebas Neue', 'sans-serif'],
       },

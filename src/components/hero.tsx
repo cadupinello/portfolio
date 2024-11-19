@@ -35,7 +35,7 @@ const Hero = () => {
     ref={ref}
     className="flex flex-1 flex-col items-center bg-zinc-900 hero">
       <WordRotate 
-        className="text-7xl text-center md:text-9xl xl:text-10xl font-bold font-italiana tracking-[-0.02em] text-slate-50"
+        className="uppercase text-7xl text-center md:text-9xl xl:text-10xl font-bold font-anton tracking-[-0.02em] text-slate-50"
         words={["Carlos Eduardo", "22 anos", "Brasileiro"]}
       />
 
@@ -44,7 +44,7 @@ const Hero = () => {
       </Link>
       <WordRotate 
         words={["Dev Front-end", "Analista de Sistemas", "Desenvolvedor Web"]}
-        className="text-7xl text-center md:text-9xl xl:text-10xl font-bold font-italiana tracking-[-0.02em] text-slate-50"
+        className="uppercase text-7xl text-center md:text-9xl xl:text-10xl font-bold font-anton tracking-[-0.02em] text-slate-50"
       />
       <div className="flex flex-col items-center mb-12">
       <Mouse className="text-zinc-600 animate-pulse mt-12 w-10 h-10" />
