@@ -52,13 +52,15 @@ const Projects = () => {
         .filter((project: ProjectCard) => project?.created_at && new Date(project.created_at).getFullYear() > 2022)
         .slice(0, 6);
 
-      setProjectsData(filteredProjects.map((project: ProjectCard) => ({
-        name: project.name,
-        html_url: project.html_url,
-        language: project.language,
-        img: project.name === '' ? '' : '',
-        video: projectImages[project.name] || '',
-      })));
+      setProjectsData(filteredProjects
+        .filter((project: ProjectCard) => project.name !== "portfolio")
+        .map((project: ProjectCard) => ({
+          name: project.name,
+          html_url: project.html_url,
+          language: project.language,
+          img: project.name === '' ? '' : '',
+          video: projectImages[project.name] || '',
+        })));
     };
     fetchProjects();
   }, []);
@@ -67,11 +69,11 @@ const Projects = () => {
     <motion.section
       variants={variants}
       initial="initial"
-      animate={isInView && "animate"}
+      animate={isInView && "animate" || "animate"}
       ref={ref}
       className="flex flex-col items-center justify-center flex-1 w-full py-16 bg-zinc-900 projects">
       <h1 className="font-bold font-bebas w-fit text-7xl md:text-9xl xl:text-9xl text-slate-50">SELECIONAR <br /> TRABALHOS ({projectsData?.length})</h1>
-      <div className="grid w-full grid-cols-1 gap-4 p-6 mt-12 md:grid-cols-2 lg:grid-cols-2">
+      <div className="grid w-full grid-cols-1 gap-4 p-6 mt-12 sm:grid-cols-2 md:grid-cols-2">
         {projectsData.map(({ name, html_url, img, video }, idx) => (
           <motion.div
             key={name}
@@ -86,13 +88,13 @@ const Projects = () => {
                   loop
                   muted
                   playsInline
-                  className="w-full h-[650px] object-cover"
+                  className="w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[650px] object-cover"
                 />
               ) : (
                 <img
                   src={img}
                   alt={name}
-                  className="object-cover w-full h-full"
+                  className="object-cover w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[650px]"
                 />
               )}
             </BlurFade>
@@ -100,15 +102,21 @@ const Projects = () => {
               initial={{ opacity: 0, y: 10 }}
               whileHover={{ opacity: 1, y: -10 }}
               transition={{ duration: 0.3 }}
-              className="absolute inset-0 flex items-center justify-center text-2xl font-bold text-white opacity-0 font-koho bg-zinc-900 bg-opacity-90 group-hover:opacity-100"
+              className="absolute inset-0 flex items-center justify-center text-lg font-bold text-white opacity-0 font-koho bg-zinc-900 bg-opacity-90 group-hover:opacity-100"
             >
-              <a href={html_url} target="_blank" rel="noopener noreferrer" className="z-10 text-xl font-koho hover:underline underline-offset-4">
+              <a
+                href={html_url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="z-10 text-lg font-koho hover:underline underline-offset-4"
+              >
                 {name}
               </a>
             </motion.div>
           </motion.div>
         ))}
       </div>
+
     </motion.section>
   )
 }
