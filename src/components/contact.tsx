@@ -1,5 +1,5 @@
-import { Github, Instagram, Linkedin } from "lucide-react"
-import ContactImg from '../assets/contactImg.jpeg';
+import { Github, Instagram, Linkedin } from "lucide-react";
+import ContactImg from "../assets//handshark.jpg";
 
 const Contact = () => {
   return (
@@ -11,7 +11,10 @@ const Contact = () => {
       <h2 className="px-4 my-4 text-xl text-center sm:px-8 md:px-12 sm:my-6 sm:text-2xl md:text-3xl font-bebas text-slate-50">
         Envie uma mensagem para o meu e-mail:
         <br />
-        <a href="mailto:carlos.pinello@outlook.com" className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-zinc-50 hover:underline hover:underline-offset-4">
+        <a
+          href="mailto:carlos.pinello@outlook.com"
+          className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-zinc-50 hover:underline hover:underline-offset-4"
+        >
           carlos.pinello@outlook.com
         </a>
       </h2>
@@ -30,19 +33,33 @@ const Contact = () => {
       </h2>
 
       <div className="flex items-center justify-center gap-3 sm:gap-4">
-        <a href="https://github.com/carlospinellowork" target="_blank" rel="noreferrer" className="w-10 h-10 sm:w-12 sm:h-12 text-slate-50">
+        <a
+          href="https://github.com/carlospinellowork"
+          target="_blank"
+          rel="noreferrer"
+          className="w-10 h-10 sm:w-12 sm:h-12 text-slate-50"
+        >
           <Github />
         </a>
-        <a href="https://www.linkedin.com/in/carlos-eduardo-9ba041156/" target="_blank" rel="noreferrer" className="w-10 h-10 sm:w-12 sm:h-12 text-slate-50">
+        <a
+          href="https://www.linkedin.com/in/carlos-eduardo-9ba041156/"
+          target="_blank"
+          rel="noreferrer"
+          className="w-10 h-10 sm:w-12 sm:h-12 text-slate-50"
+        >
           <Linkedin />
         </a>
-        <a href="https://www.instagram.com/dududucadu/" target="_blank" rel="noreferrer" className="w-10 h-10 sm:w-12 sm:h-12 text-slate-50">
+        <a
+          href="https://www.instagram.com/dududucadu/"
+          target="_blank"
+          rel="noreferrer"
+          className="w-10 h-10 sm:w-12 sm:h-12 text-slate-50"
+        >
           <Instagram />
         </a>
       </div>
     </div>
+  );
+};
 
-  )
-}
-
-export default Contact
+export default Contact;

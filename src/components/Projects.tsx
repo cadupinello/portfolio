@@ -1,9 +1,9 @@
-import { motion, useInView } from 'framer-motion';
-import { useMemo, useRef, useState } from 'react';
-import FaqsApp from '../assets/faqs-app.mp4';
-import MksEcommerce from '../assets/mks-ecommercevideo.mp4';
-import PgLinks from '../assets/pg-links.mp4';
-import DrinksOnline from '../assets/cardapio-online.mp4';
+import { motion, useInView } from "framer-motion";
+import { useMemo, useRef, useState } from "react";
+import DrinksOnline from "../assets/cardapio-online.mp4";
+import FaqsApp from "../assets/faqs-app.mp4";
+import MksEcommerce from "../assets/mks-ecommercevideo.mp4";
+import PgLinks from "../assets/pg-links.mp4";
 import BlurFade from "./magicui/blur-fade";
 
 export type ProjectCard = {
@@ -13,7 +13,7 @@ export type ProjectCard = {
   img: string;
   video: string;
   created_at: string;
-}
+};
 
 const Projects = () => {
   const [projectsData, setProjectsData] = useState([]);
@@ -35,32 +35,40 @@ const Projects = () => {
         staggerChildren: 0.1,
       },
     },
-  }
+  };
 
   const projectImages: { [key: string]: string } = {
     "faqs-app": FaqsApp,
     "pg-links": PgLinks,
     "mks-ecommerce": MksEcommerce,
-    "drinksOnline": DrinksOnline
+    drinksOnline: DrinksOnline,
   };
 
   useMemo(() => {
     const fetchProjects = async () => {
-      const response = await fetch('https://api.github.com/users/carlospinellowork/repos');
+      const response = await fetch(
+        "https://api.github.com/users/carlospinellowork/repos"
+      );
       const projects = await response.json();
       const filteredProjects = projects
-        .filter((project: ProjectCard) => project?.created_at && new Date(project.created_at).getFullYear() > 2022)
+        .filter(
+          (project: ProjectCard) =>
+            project?.created_at &&
+            new Date(project.created_at).getFullYear() > 2022
+        )
         .slice(0, 6);
 
-      setProjectsData(filteredProjects
-        .filter((project: ProjectCard) => project.name !== "portfolio")
-        .map((project: ProjectCard) => ({
-          name: project.name,
-          html_url: project.html_url,
-          language: project.language,
-          img: project.name === '' ? '' : '',
-          video: projectImages[project.name] || '',
-        })));
+      setProjectsData(
+        filteredProjects
+          .filter((project: ProjectCard) => project.name !== "portfolio")
+          .map((project: ProjectCard) => ({
+            name: project.name,
+            html_url: project.html_url,
+            language: project.language,
+            img: project.name === "" ? "" : "",
+            video: projectImages[project.name] || "",
+          }))
+      );
     };
     fetchProjects();
   }, []);
@@ -69,10 +77,13 @@ const Projects = () => {
     <motion.section
       variants={variants}
       initial="initial"
-      animate={isInView && "animate" || "animate"}
+      animate={(isInView && "animate") || "animate"}
       ref={ref}
-      className="flex flex-col items-center justify-center flex-1 w-full py-16 bg-zinc-900 projects">
-      <h1 className="font-bold font-bebas w-fit text-7xl md:text-9xl xl:text-9xl text-slate-50">SELECIONAR <br /> TRABALHOS ({projectsData?.length})</h1>
+      className="flex flex-col items-center justify-center flex-1 w-full py-16 bg-slate-50 projects"
+    >
+      <h1 className="font-bold font-bebas w-fit text-7xl md:text-9xl xl:text-9xl text-zinc-900">
+        SELECIONAR <br /> TRABALHOS ({projectsData?.length})
+      </h1>
       <div className="grid w-full grid-cols-1 gap-4 p-6 mt-12 sm:grid-cols-2 md:grid-cols-2">
         {projectsData.map(({ name, html_url, img, video }, idx) => (
           <motion.div
@@ -116,9 +127,8 @@ const Projects = () => {
           </motion.div>
         ))}
       </div>
-
     </motion.section>
-  )
-}
+  );
+};
 
 export default Projects;

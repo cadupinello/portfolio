@@ -8,7 +8,7 @@ const languagesSpecialist = [
   },
   {
     name: "TypeScript",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
   },
   {
     name: "React",
@@ -50,13 +50,7 @@ const languagesSpecialist = [
 
 const firstRow = languagesSpecialist.slice(0, languagesSpecialist.length / 2);
 
-const ReviewCard = ({
-  icon,
-  name,
-}: {
-  icon: string;
-  name: string;
-}) => {
+const ReviewCard = ({ icon, name }: { icon: string; name: string }) => {
   return (
     <figure
       className={cn(
@@ -64,15 +58,19 @@ const ReviewCard = ({
         // light styles
         " bg-zinc-50 hover:bg-gray-50/[.15] hover:text-zinc-50",
         // dark styles
-        "dark:bg-zinc-800 dark:hover:bg-zinc-800/[.15] dark:text-zinc-50",
+        "dark:bg-zinc-800 dark:hover:bg-zinc-800/[.15] dark:text-zinc-50"
       )}
     >
       <div className="flex flex-row items-center justify-center gap-2">
-        <img className="rounded-md" width="32" height="32" alt={name} src={icon} />
+        <img
+          className="rounded-md"
+          width="32"
+          height="32"
+          alt={name}
+          src={icon}
+        />
         <div className="flex flex-col">
-          <figcaption className="text-sm font-medium">
-            {name}
-          </figcaption>
+          <figcaption className="text-sm font-medium">{name}</figcaption>
         </div>
       </div>
     </figure>
